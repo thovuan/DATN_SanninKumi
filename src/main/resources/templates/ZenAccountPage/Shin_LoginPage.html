@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
+    <link rel = "stylesheet" th:href="@{/css/loginstyle.css}">
+
+
+</head>
+<body>
+<div class="login">
+    <img th:src="@{/PIC_INTRO/login-bg.png}" alt="" class="login__bg">
+    <form th:action="@{/Identity/Guest/Login}" th:object="${user}" method="post" class="login__form">
+        <h4 class="login__title2">STL ORIGINAL - CUAHANGBANSACH</h4>
+        <h2 class="login__title">Đăng nhập</h2>
+        <hr class="colorgraph" />
+
+        <div th:if="${errorMessage != null}" class="alert alert-danger" role="alert">
+            <span th:text="${errorMessage}"></span>
+        </div>
+
+        <div class="login__inputs">
+            <div class="login__box">
+
+                <input type="text" id="tendangnhap" class="login__input" th:field="*{tendangnhap}" th:placeholder="${'Tên Đăng Nhập'}"  required>
+
+            </div>
+
+            <div class="login__box">
+
+                <input type="password" id="password" class="login__input" th:field="*{matkhau}" th:placeholder="${'Mật Khẩu'}"  required>
+            </div>
+        </div>
+
+
+        <div class="login__check">
+            <div class="login__check-box">
+                <input type="checkbox" class="login__check-input" id="user-check">
+                <label for="user-check" class="login__check-label">Remember me</label>
+            </div>
+
+            <a th:href="@{/Identity/Guest/ChangePassword}" class="login__forgot">
+                Change Password
+            </a>
+        </div>
+
+        <input id="LoginForm" type="submit" value="Login" class="login__button">
+
+
+
+        <div class="login__register">
+            Don't have an account?
+            <a th:href="@{/Identity/Guest/NewUser}" >
+                Register new Account
+            </a>
+        </div>
+
+
+
+    </form>
+</div>
+
+</body>
+</html>
